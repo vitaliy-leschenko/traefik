@@ -38,7 +38,7 @@ function Get-ManifestName([string]$name)
     return ($name -replace "/", "_") -replace ":", "-"
 }
 
-function Push-Manifest([string]$name, [string[]]$items, [string[]]$bases)
+function Push-Manifest([string]$name, [string[]]$items, [string[]]$bases, [string[]]$extras)
 {
     $folder = Get-ManifestName -name $name
     if (Test-Path "~/.docker/manifests/$folder")
@@ -49,6 +49,10 @@ function Push-Manifest([string]$name, [string[]]$items, [string[]]$bases)
 
     $command = "docker manifest create $name";
     foreach($item in $items)
+    {
+        $command = "$command --amend $item"
+    }
+    foreach($item in $extras)
     {
         $command = "$command --amend $item"
     }
