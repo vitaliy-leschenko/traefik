@@ -12,5 +12,7 @@ FROM $BASE
 ENV PATH="C:\Program Files\PowerShell;C:\utils;C:\Windows\system32;C:\Windows;"
 COPY --from=bins /bins/traefik.exe /traefik.exe
 EXPOSE 80
+EXPOSE 443
+EXPOSE 8080
 ENTRYPOINT [ "/traefik.exe" ]
 
