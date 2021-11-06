@@ -2,7 +2,7 @@
   "traefik": [
     "2.5.3"
    ],
-  "baseimage": "mcr.microsoft.com/windows/servercore",
+  "baseimage": "mcr.microsoft.com/windows/nanoserver",
   "tagsMap": [
     {"source":"ltsc2022","target":"2022"},
     {"source":"20H2","target":"20H2"},
