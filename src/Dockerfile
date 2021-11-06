@@ -10,6 +10,7 @@ RUN unzip traefik.zip
 
 FROM $BASE
 USER ContainerAdministrator
+ENV PATH="C:\Windows\system32;C:\Windows;"
 COPY --from=bins /bins/traefik.exe /traefik.exe
 EXPOSE 80
 EXPOSE 443
