@@ -31,7 +31,7 @@ foreach ($traefik in $traefiks)
                 New-Build -name $current -output $output -args @("BASE=$base", "TRAEFIKVERSION=$traefik")
             }
             
-            Push-Manifest -name "$($image):v$traefik" -items $items -bases $bases -extras @("amd64/traefik:$traefik")
+            Push-Manifest -name "$($image):$traefik" -items $items -bases $bases -extras @("amd64/traefik:$traefik")
         }
     }
 }
