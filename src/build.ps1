@@ -25,7 +25,7 @@ foreach ($traefik in $traefiks)
             foreach($tag in $config.tagsMap) 
             {
                 $base = "$($config.baseimage):$($tag.source)"
-                $current = "$($image):v$($traefik)-$($tag.target)"
+                $current = "$($image):$($traefik)-$($tag.target)"
                 $bases += $base
                 $items += $current
                 New-Build -name $current -output $output -args @("BASE=$base", "TRAEFIKVERSION=$traefik")
