@@ -9,11 +9,13 @@ WORKDIR /bins
 RUN curl -Lo traefik.zip https://github.com/traefik/traefik/releases/download/${TRAEFIKVERSION}/traefik_${TRAEFIKVERSION}_windows_amd64.zip
 RUN unzip traefik.zip
 
+FROM $NETAPI as netapi
+
 FROM $BASE
 USER ContainerAdministrator
 ENV PATH="C:\Windows\system32;C:\Windows;"
 COPY --from=bins /bins/traefik.exe /traefik.exe
-COPY --from=$NETAPI ["\\Windows\\System32\\netapi32.dll", "\\Windows\\System32"]
+COPY --from=netapi ["\\Windows\\System32\\netapi32.dll", "\\Windows\\System32"]
 EXPOSE 80
 EXPOSE 443
 EXPOSE 8080
