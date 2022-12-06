@@ -1,10 +1,7 @@
 {
   "baseimage": "mcr.microsoft.com/windows/nanoserver",
   "tagsMap": [
-    {"source":"ltsc2022","target":"ltsc2022"},
-    {"source":"20H2","target":"20H2"},
-    {"source":"2004","target":"2004"},
-    {"source":"1909","target":"1909"},
-    {"source":"1809","target":"1809"}
+    {"source":"ltsc2022","target":"ltsc2022","netapi32image": "mcr.microsoft.com/windows/servercore:ltsc2022"},
+    {"source":"1809","target":"1809","netapi32image": "mcr.microsoft.com/windows/servercore:ltsc2019"}
   ]
 }

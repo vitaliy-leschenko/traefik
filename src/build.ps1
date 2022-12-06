@@ -26,9 +26,10 @@ foreach ($traefik in $traefiks)
             {
                 $base = "$($config.baseimage):$($tag.source)"
                 $current = "$($image):$($traefik)-$($tag.target)"
+                $netapi = $tag.netapi32image
                 $bases += $base
                 $items += $current
-                New-Build -name $current -output $output -args @("BASE=$base", "TRAEFIKVERSION=$traefik")
+                New-Build -name $current -output $output -args @("BASE=$base", "TRAEFIKVERSION=$traefik", "NETAPI=$netapi")
             }
             
             Push-Manifest -name "$($image):$traefik" -items $items -bases $bases -extras @("amd64/traefik:$traefik")
