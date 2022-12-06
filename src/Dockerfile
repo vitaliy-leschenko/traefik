@@ -15,7 +15,7 @@ FROM $BASE
 USER ContainerAdministrator
 ENV PATH="C:\Windows\system32;C:\Windows;"
 COPY --from=bins /bins/traefik.exe /traefik.exe
-COPY --from=netapi ["\\Windows\\System32\\netapi32.dll", "\\Windows\\System32"]
+COPY --from=netapi /Windows/System32/netapi32.dll /Windows/System32
 EXPOSE 80
 EXPOSE 443
 EXPOSE 8080
